@@ -37,16 +37,16 @@ class EncryptorPassword:
 totoSize = 4
 ttl = 30
 key = 'encrypted password'
-dp = EncryptorPassword()
-secretKey = dp.secretKey(key)
-baseKey =dp.randomword(4).encode()
+ep = EncryptorPassword()
+secretKey = ep.secretKey(key)
+baseKey =ep.randomword(4).encode()
 content = 'test content'
 
 def main(beginTime, second):
     print('等待',second,'秒')
-    ecryptContent = dp.server(beginTime, secretKey, totoSize, ttl, baseKey, content)
+    ecryptContent = ep.server(beginTime, secretKey, totoSize, ttl, baseKey, content)
     time.sleep(second)
-    decryptContent = dp.client(beginTime, secretKey, totoSize, ttl, baseKey, ecryptContent)
+    decryptContent = ep.client(beginTime, secretKey, totoSize, ttl, baseKey, ecryptContent)
     print('decrypt result: ',decryptContent)
 
 if __name__ == "__main__":
