@@ -23,4 +23,7 @@ class TOTP:
         return str(otp).rjust(self.codeDigits, '0')
 
     def tc(self, ttl):
-        return format(int(int(time.time())/int(ttl)),'x').upper()
+        return self.tc(0, ttl)
+
+    def tc(self, begintime, ttl):
+        return format(int((time.time()-int(begintime))/int(ttl)),'x').upper()
